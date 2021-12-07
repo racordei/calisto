@@ -1,0 +1,14 @@
+FROM node:alpine
+
+WORKDIR /usr/app
+
+COPY package*.json ./
+
+RUN npm config set proxy http://proxy-fr-croissy.gemalto.com:8080
+RUN npm install
+
+COPY . .
+
+# EXPOSE ${BACKEND_EXPOSE_PORT}
+
+# CMD [ "npm", "start" ]

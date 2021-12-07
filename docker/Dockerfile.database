@@ -1,0 +1,11 @@
+FROM mariadb:latest
+
+#RUN apt update
+#RUN apt install nano
+#RUN apt install -y nodejs
+
+COPY ./src/config/init.sql /script/init.sql
+
+# EXPOSE ${MARIADB_EXPOSE_PORT}
+
+# CMD ["mysqld", "--datadir=/var/lib/mysql", "--lower_case_table_names=1", "--init-file=/script/init.sql"]

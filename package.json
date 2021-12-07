@@ -1,0 +1,25 @@
+{
+  "name": "perso",
+  "version": "0.0.1",
+  "description": "Perso Portal by Thales DIS",
+  "main": "index.js",
+  "author": {
+    "name": "Rafael CORDEIRO",
+    "email": "eng.rcordeiro@gmail.com"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/server.js --trace-warnings",
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mariadb": "^2.5.5",
+    "sequelize": "^6.12.0-beta.1",
+    "socket.io": "^4.4.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.3.0"
+  }
+}

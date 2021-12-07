@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  database:
+    container_name: calisto_mariadb
+    hostname: calisto_mariadb
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.database
+    image: calisto/mariadb
+    command: mysqld --datadir=/var/lib/mysql --lower_case_table_names=1 --init-file="/script/init.sql" --verbose
+    ports:
+      - "${MARIADB_PORT}:${MARIADB_EXPOSE_PORT}"
+    environment:
+      - MARIADB_ROOT_PASSWORD=$MARIADB_ROOT_PASSWORD
+      - MYSQL_TCP_PORT=$MARIADB_EXPOSE_PORT
+      - TZ=America/Sao_Paulo
+    # volumes:
+    #   - ./mariadb:/var/lib/mysql
+  app:
+    container_name: calisto_backend
+    hostname: calisto_backend
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.backend
+    image: calisto/backend
+    command: npm start
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_EXPOSE_PORT}"
+    environment:
+      - NODE_ENV=production
+      - MARIADB_PASSWORD=$MARIADB_PASSWORD
+      - TZ=America/Sao_Paulo
+    # volumes:
+    #   - .:/usr/app
+    # deploy:
+    #   replicas: 0
+    depends_on:
+      - database
