@@ -1,8 +1,10 @@
 'use strict';
 
+const TABLE_NAME = 'production_status'
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('production_status', {
+    await queryInterface.createTable(TABLE_NAME, {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -28,11 +30,22 @@ module.exports = {
       quantity: {
         allowNull: false,
         type: Sequelize.INTEGER
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
       }
+    })
+    await queryInterface.addIndex(TABLE_NAME, ['customername', 'hexid'], {
+      name: `${TABLE_NAME}_idx01`
     })
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('production_status')
+    await queryInterface.dropTable(TABLE_NAME)
   }
 };
