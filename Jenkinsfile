@@ -10,6 +10,7 @@ pipeline {
       
       steps {
         echo 'building the application...'
+        java -version
       }
     }
     
@@ -17,7 +18,6 @@ pipeline {
       
       steps {
         echo 'testing the application...'
-        echo 'e ai Antonio, blz?'
       }
     }
     
