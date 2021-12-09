@@ -10,7 +10,7 @@ pipeline {
       
       steps {
         echo 'building the application...'
-        cmd /c "java -version"
+        bat "java -version"
       }
     }
     
