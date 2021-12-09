@@ -1,6 +1,6 @@
 pipeline {
   
-  agent 'windows-agent-cordeiro'
+  agent 'windows'
   
   stages {
     
