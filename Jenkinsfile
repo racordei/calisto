@@ -1,7 +1,7 @@
 pipeline {
   
   agent {
-    dockerfile true
+    label "windows"
   }
   
   stages {
@@ -9,7 +9,9 @@ pipeline {
     stage("Test") {
       
       steps {
-        echo 'Testing the dockerfile...'
+        sh """
+          docker container ls
+        """
       }
     }
   }
