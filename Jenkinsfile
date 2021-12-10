@@ -9,7 +9,7 @@ pipeline {
     stage("Test") {
       
       steps {
-        sh """
+        bat """
           docker container ls
         """
       }
